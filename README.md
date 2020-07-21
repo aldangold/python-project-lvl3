@@ -10,114 +10,31 @@
         <img src="https://api.codeclimate.com/v1/badges/db625eb639f5f6ad0895/test_coverage" /></a>
 </div>
 
-<h2>:performing_arts: The console page loader. </h2>
-	<p>This project is a console application blah blah blah.</p>
+<h2>:inbox_tray: The console page loader. </h2>
+	<p>This project is a console application that allows you to download site pages into a set directory.</p>
 
-<!-- <h2>:package: Installation Guide </h2>
+<h2>:package: Installation Guide </h2>
 		<ul>
 		  	<li> 
-		  	<p>Install Python dependencies - pyyaml </p>
+		  	<p>Install Python dependencies - requests </p>
 		  	</li>
-		  	<pre>$pip install pyyaml</pre>
-			<li> <p>Install aldangold-gendiff</p>
+		  	<pre>$pip install requests</pre>
+			<li> <p>Install aldangold-page-loader</p>
 		  	</li>
-		  	<pre>$pip install --index-url https://test.pypi.org/simple aldangold-gendiff</pre>
+		  	<pre>$pip install --index-url https://test.pypi.org/simple aldangold-page-loader</pre>
 			<li> <p>Call context help</p>
 		  	</li>
-		  	<pre>$gendiff -h</pre>
+		  	<pre>$page-loader -h</pre>
 		</ul>
 		<p align="center">
-			<a href="https://asciinema.org/a/opzEEFAqiw2EmsbC0EX2bvsHP" target="_blank">
-			<img src="https://asciinema.org/a/opzEEFAqiw2EmsbC0EX2bvsHP.svg" width="80%"/></a>
+			<a href="https://asciinema.org/a/YyD4wM4kYqIiYJ7lnogComZCA" target="_blank">
+				<img src="https://asciinema.org/a/YyD4wM4kYqIiYJ7lnogComZCA.svg" width="80%"/></a>
 		</p>
 
-<h2> :rocket: Launch and demo of gendiff</h2>
-<h4> Demonstration of output of comparison results two flat files type of JSON in cascade format.</h4>
-    <p>before.json</p>
-		<pre>
-{
-    "host": "hexlet.io",
-    "timeout": 50,
-    "proxy": "123.234.53.22"
-  }
-  		</pre>
-  	<p>after.json</p>
-	  	<pre>
-{
-    "timeout": 20,
-    "verbose": true,
-    "host": "hexlet.io"
-  }
-  	</pre>
-	<pre>$gendiff -f cascade before.json after.json</pre>
+<h2> :rocket: Launch and demo of Page loader</h2>
+<h4> Demonstration of loading a page into a set directory.</h4>
+	<pre>$page-loader --output **download directory**  https://hexlet.io/courses</pre>
 		<p align="center">
-			<a href="https://asciinema.org/a/EUNVV1iHwlBMichJkjcisxD3r" target="_blank">
-			<img src="https://asciinema.org/a/EUNVV1iHwlBMichJkjcisxD3r.svg" width="80%" /></a>
+			<a	href="https://asciinema.org/a/e9WTvkidHcAfrqvD6UHtbLYat" target="_blank">
+				<img src="https://asciinema.org/a/e9WTvkidHcAfrqvD6UHtbLYat.svg" width="80%"/></a>
 		</p>
-<h4> Demonstration of output of comparison results two flat files type of YAML in cascade format.</h4>
-	<pre>$gendiff -f cascade before.yml after.yml</pre>
-		<p align="center">
-			<a href="https://asciinema.org/a/1FR0IBlUWs3Fb4pfyo3VkmD7n" target="_blank">
-			<img src="https://asciinema.org/a/1FR0IBlUWs3Fb4pfyo3VkmD7n.svg" width="80%" /></a>
-		</p>
-<h4> Demonstration of the results of comparing two files of a nested structure in accessible formats.	</h4>
-	<p>before.json</p>
-		<pre>
-{
-  "common": {
-    "setting1": "Value 1",
-    "setting2": "200",
-    "setting3": true,
-    "setting6": {
-      "key": "value"
-    }
-  },
-  "group1": {
-    "baz": "bas",
-    "foo": "bar"
-  },
-  "group2": {
-    "abc": "12345"
-  }
-}
-  		</pre>
-  	<p>after.json</p>
-	<pre>
-{
-  "common": {
-    "setting1": "Value 1",
-    "setting3": true,
-    "setting4": "blah blah",
-    "setting5": {
-      "key5": "value5"
-    }
-  },
-
-  "group1": {
-    "foo": "bar",
-    "baz": "bars"
-  },
-
-  "group3": {
-    "fee": "100500"
-  }
-}
-  	</pre>
-	<h4> Demonstration of the output of the difference in the default format - plain text.</h4>
-	<pre>$gendiff before.json after.json</pre>
-		<p align="center">
-			<a href="https://asciinema.org/a/q1pFiRmmljMJ01bJZBbgB9jdt" target="_blank">
-			<img src="https://asciinema.org/a/q1pFiRmmljMJ01bJZBbgB9jdt.svg" width="80%"/></a>
-		</p>
-	<h4> Demonstration of the output of the difference in the format - cascade.</h4>
-	<pre>$gendiff -f cascade before.json after.json</pre>
-		<p align="center">
-			<a href="https://asciinema.org/a/DL8CNXY7Ot6JGKUq4m6a3km6N" target="_blank">
-			<img src="https://asciinema.org/a/DL8CNXY7Ot6JGKUq4m6a3km6N.svg" width="80%"/></a>
-		</p>
-	<h4> Demonstration of the output of the difference in the format - JSON.</h4>
-	<pre>$gendiff -f json before.json after.json</pre>
-		<p align="center">
-			<a href="https://asciinema.org/a/LKj292acxYKSqDbXxH6l4ksIN" target="_blank">
-			<img src="https://asciinema.org/a/LKj292acxYKSqDbXxH6l4ksIN.svg" width="80%"/></a>
-		</p> -->
