@@ -6,8 +6,10 @@ import argparse
 import requests
 from urllib import parse
 
+
 PATTERN = r'[^A-Za-z0-9]'
 SUB = '-'
+ERR_CONNECT = 'Please check your internet connection, entered URL and try again'
 
 
 def load_page(directory: str, url: str):
@@ -18,16 +20,22 @@ def load_page(directory: str, url: str):
         url (str): String value of URL.
 
     """
-    content = get_page(url)
-    name_of_file = get_name(url)
-    path_for_save = os.path.join(directory, name_of_file)
-    with open(os.path.abspath(path_for_save), 'wb') as file:
-        file.write(content)
+    try:
+        content = get_page(url)
+        name_of_file = get_name(url)
+        path_for_save = os.path.join(directory, name_of_file)
+        with open(os.path.abspath(path_for_save), 'wb') as file:
+            file.write(content)
+    except FileNotFoundError as e:
+        raise SystemExit(e)
 
 
 def get_page(url: str):
-    response = requests.get(url)
-    return response.content
+    try:
+        response = requests.get(url)
+        return response.content
+    except requests.ConnectionError:
+        raise SystemExit(ERR_CONNECT)
 
 
 def get_name(url: str):

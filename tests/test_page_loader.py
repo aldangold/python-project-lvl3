@@ -3,6 +3,7 @@ import argparse
 import pytest
 import tempfile
 import os
+import re
 
 from page_loader import engine
 
@@ -15,6 +16,20 @@ from page_loader import engine
 )
 def test_get_name(url, name_file):
     assert name_file == engine.get_name(url)
+
+
+@pytest.mark.parametrize(
+    'url,dir,error', [
+        ('https://hexlet.ii', 'temp_dir', 'Please check your internet connection'),
+        ('https://hexlet.io', '~/fff', 'No such file or directory'),
+    ],
+)
+def test_check_exception(url, dir, error):
+    with tempfile.TemporaryDirectory() as temp_dir:
+        with pytest.raises(SystemExit) as e:
+            engine.load_page(dir, url)
+        assert (error in str(e.value)) == True
+
 
 
 def test_load_file():
